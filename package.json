@@ -1,0 +1,28 @@
+{
+  "name": "step",
+  "version": "1.0.0",
+  "description": "pdf impositon app",
+  "main": "main.js",
+  "scripts": {
+    "start":"electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leografx/step.git"
+  },
+  "keywords": [
+    "imposition",
+    "pdf",
+    "barcode"
+  ],
+  "author": "Leo J",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leografx/step/issues"
+  },
+  "homepage": "https://github.com/leografx/step#readme",
+  "devDependencies": {
+    "electron": "^6.0.12"
+  }
+}
