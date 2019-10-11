@@ -4,7 +4,7 @@
   "description": "pdf impositon app",
   "main": "main.js",
   "scripts": {
-    "start":"electron .",
+    "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,5 +24,8 @@
   "homepage": "https://github.com/leografx/step#readme",
   "devDependencies": {
     "electron": "^6.0.12"
+  },
+  "dependencies": {
+    "font-list": "^1.2.0"
   }
 }
