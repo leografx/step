@@ -12,17 +12,24 @@
 
     <div class="main-container">
 
-        <div class="canvas-area">Canvas Area</div>
+        <div id="canvas-area" style="width: 100%; height: 100%;">
+            <div id="canvas-page">
+                <div id="page-margin-top">&nbsp;</div>
+                <div id="page-margin-left">&nbsp;</div>
+                <div id="page-margin-right">&nbsp;</div>
+                <div id="page-margin-bottom">&nbsp;</div>
+            </div>
+        </div>
 
         <div id="page-properties">
             <h6>Page Dimensions</h6>
             <div class="input-group">
                 <label for="width">Width</label>
-                <input type="number" name="width" max="19.00" min="8.50" step=".125" id="width" value="8.50">
+                <input type="number" name="width" max="19.00" min="1" step=".125" id="width" value="8.50">
             </div>
             <div class="input-group">
                 <label for="height">Height</label>
-                <input type="number" name="height" max="19.00" min="8.50" step=".125" id="height" value="11.00">
+                <input type="number" name="height" max="19.00" min="1" step=".125" id="height" value="11.00">
             </div>
 
             <h6>Numbering</h6>
@@ -56,11 +63,11 @@
             <div class="col-2">
                 <div>
                     <label for="columns">Columns</label>
-                    <input type="number" name="columns" id="columns" value="2">
+                    <input type="number" name="columns" min="1" id="columns" value="2">
                 </div>
                 <div>
                     <label for="rows">Rows</label>
-                    <input type="number" name="rows" id="rows" value="4">
+                    <input type="number" name="rows" min="1" id="rows" value="4">
                 </div>
             </div>
 
@@ -68,15 +75,15 @@
             <div class="col-2">
                 <div>
                     <label for="margin-top">Top</label>
-                    <input type="number" name="margin-top" min="0" max="19" step=".125" id="margin-top" value="0">
+                    <input type="number" name="margin-top" min="0" max="19" step=".125" id="margin-top" value=".25">
                     <label for="margin-left">Left</label>
-                    <input type="number" name="margin-left" min="0" max="19" step=".125" id="margin-left" value="0">
+                    <input type="number" name="margin-left" min="0" max="19" step=".125" id="margin-left" value=".25">
                 </div>
                 <div>
                     <label for="margin-bottom">Bottom</label>
-                    <input type="number" name="margin-bottom" min="0" max="19" step=".125" id="margin-bottom" value="0">
+                    <input type="number" name="margin-bottom" min="0" max="19" step=".125" id="margin-bottom" value=".25">
                     <label for="margin-right">Right</label>
-                    <input type="number" name="margin-right" min="0" max="19" step=".125" id="margin-right" value="0">
+                    <input type="number" name="margin-right" min="0" max="19" step=".125" id="margin-right" value=".25">
                 </div>
             </div>
         </div>
