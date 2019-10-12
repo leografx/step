@@ -1,7 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat+Alternates:300,400,500,700&display=swap');
 @font-face {
     font-family: 'SFRegular';
     src: url('fonts/SF-Pro-Text-Regular.otf');
+}
+
+@font-face {
+    font-family: 'SFBold';
+    src: url('fonts/SF-Pro-Text-Bold.otf');
 }
 
 * {
@@ -12,7 +16,10 @@
     background-color: #323232;
     color: #d7d7d7;
     font-size: 19px;
-    font-weight: 300;
+}
+
+*:focus {
+    outline: none;
 }
 
 .tool-bar-container {
@@ -38,7 +45,7 @@
 }
 
 div {
-    border: 1px solid #2A2A2A;
+    /* border: 1px solid #2A2A2A; */
 }
 
 .footer {
@@ -47,13 +54,22 @@ div {
     grid-auto-rows: 5vh;
 }
 
+.canvas-area {
+    background-color: #1B1B1B;
+}
+
 input {
-    padding: 5px;
+    padding: 3px;
     margin: 10px;
     background-color: #2A2A2A;
     color: #d7d7d7;
     border-style: none;
     border: 1px solid #3B3B3B;
+}
+
+input:focus {
+    border: 1px solid #1473E6;
+    border-style: solid;
 }
 
 input[type=number] {
@@ -76,9 +92,29 @@ h3,
 h4,
 h5,
 h6 {
+    font-family: 'SFBold', sans-serif;
     margin: 10px;
 }
 
 h6 {
-    font-size: 16px;
+    font-size: 18px;
+}
+
+div>h6 {
+    border-bottom: 1px solid #2A2A2A;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+
+.input-group-l {
+    display: grid;
+    grid-template-columns: 100px auto;
+}
+
+.input-group-l input[type=number] {
+    width: 150px;
+}
+
+.col-2 div input {
+    width: 150px;
 }

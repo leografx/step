@@ -12,27 +12,56 @@
 
     <div class="main-container">
 
-        <div>App Area</div>
+        <div class="canvas-area">Canvas Area</div>
 
-        <div>
+        <div id="page-properties">
+            <h6>Page Dimensions</h6>
             <div class="input-group">
                 <label for="width">Width</label>
                 <input type="number" name="width" max="19.00" min="8.50" step=".125" id="width" value="8.50">
             </div>
-
             <div class="input-group">
                 <label for="height">Height</label>
                 <input type="number" name="height" max="19.00" min="8.50" step=".125" id="height" value="11.00">
             </div>
 
-            <div class="input-group">
-                <label for="columns">Columns</label>
-                <input type="number" name="columns" id="columns" value="2">
+            <h6>Numbering</h6>
+            <div class="input-group-l">
+                <label for="quantity">Quantity</label>
+                <input type="number" name="quantity" min="1" step="1" id="quantity" value="1">
+            </div>
+            <div class="input-group-l">
+                <label for="start">Starting #</label>
+                <input type="number" name="start" min="1" step="1" id="start" value="1">
             </div>
 
-            <div class="input-group">
-                <label for="rows">Rows</label>
-                <input type="number" name="rows" id="rows" value="4">
+            <div class="input-group-l">
+                <label for="left-pad">Left Pad</label>
+                <input type="checkbox" name="left-pad" min="1" step="1" id="left-pad">
+            </div>
+
+            <h6>Append</h6>
+            <div class="col-2">
+                <div>
+                    <label for="prefix">Prefix</label>
+                    <input type="text" name="prefix" id="prefix" value="">
+                </div>
+                <div>
+                    <label for="postfix">Postfix</label>
+                    <input type="text" name="postfix" id="postfix" value="">
+                </div>
+            </div>
+
+            <h6>Stepping</h6>
+            <div class="col-2">
+                <div>
+                    <label for="columns">Columns</label>
+                    <input type="number" name="columns" id="columns" value="2">
+                </div>
+                <div>
+                    <label for="rows">Rows</label>
+                    <input type="number" name="rows" id="rows" value="4">
+                </div>
             </div>
 
             <h6>Margins</h6>
