@@ -2,16 +2,61 @@
 <html>
 
 <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="style.css">
-  <title>Step</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Step</title>
 </head>
 
 <body>
-  <h1>Step</h1>
+    <div class="tool-bar-container">Tools</div>
 
-  <!-- You can also require other files to run in this process -->
-  <script src="./renderer.js"></script>
+    <div class="main-container">
+
+        <div>App Area</div>
+
+        <div>
+            <div class="input-group">
+                <label for="width">Width</label>
+                <input type="number" name="width" max="19.00" min="8.50" step=".125" id="width" value="8.50">
+            </div>
+
+            <div class="input-group">
+                <label for="height">Height</label>
+                <input type="number" name="height" max="19.00" min="8.50" step=".125" id="height" value="11.00">
+            </div>
+
+            <div class="input-group">
+                <label for="columns">Columns</label>
+                <input type="number" name="columns" id="columns" value="2">
+            </div>
+
+            <div class="input-group">
+                <label for="rows">Rows</label>
+                <input type="number" name="rows" id="rows" value="4">
+            </div>
+
+            <h6>Margins</h6>
+            <div class="col-2">
+                <div>
+                    <label for="margin-top">Top</label>
+                    <input type="number" name="margin-top" min="0" max="19" step=".125" id="margin-top" value="0">
+                    <label for="margin-left">Left</label>
+                    <input type="number" name="margin-left" min="0" max="19" step=".125" id="margin-left" value="0">
+                </div>
+                <div>
+                    <label for="margin-bottom">Bottom</label>
+                    <input type="number" name="margin-bottom" min="0" max="19" step=".125" id="margin-bottom" value="0">
+                    <label for="margin-right">Right</label>
+                    <input type="number" name="margin-right" min="0" max="19" step=".125" id="margin-right" value="0">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">Footer</div>
+
+    <!-- You can also require other files to run in this process -->
+    <script src="./renderer.js"></script>
 </body>
 
 </html>

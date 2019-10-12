@@ -1,12 +1,84 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat+Alternates:300,400,500,700&display=swap');
+@font-face {
+    font-family: 'SFRegular';
+    src: url('fonts/SF-Pro-Text-Regular.otf');
+}
 
 * {
     margin: 0px;
     padding: 0px;
-    box-sizing: content-box;
-    font-family: 'Montserrat Alternates', sans-serif;
-    background-color: #606060;
+    box-sizing: border-box;
+    font-family: 'SFRegular', sans-serif;
+    background-color: #323232;
     color: #d7d7d7;
     font-size: 19px;
     font-weight: 300;
+}
+
+.tool-bar-container {
+    display: grid;
+    grid-auto-columns: auto;
+    grid-auto-rows: 5vh;
+}
+
+.main-container {
+    display: grid;
+    grid-template-columns: auto 360px;
+    grid-auto-rows: 88vh;
+}
+
+.col-2 {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.col-2 div {
+    display: grid;
+    grid-template-rows: 20px auto 20px auto;
+}
+
+div {
+    border: 1px solid #2A2A2A;
+}
+
+.footer {
+    display: grid;
+    grid-auto-columns: auto;
+    grid-auto-rows: 5vh;
+}
+
+input {
+    padding: 5px;
+    margin: 10px;
+    background-color: #2A2A2A;
+    color: #d7d7d7;
+    border-style: none;
+    border: 1px solid #3B3B3B;
+}
+
+input[type=number] {
+    width: 90px;
+}
+
+label {
+    font-size: 14px;
+    margin: 10px;
+}
+
+.input-group {
+    display: grid;
+    grid-template-columns: 100px auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 10px;
+}
+
+h6 {
+    font-size: 16px;
 }
