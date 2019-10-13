@@ -3,32 +3,47 @@ let paddingAmount = 0;
 let leftPadIsChecked = false;
 let scaleFactor = 72;
 
-function selectDOMPageProperties() {
+function setDOMPageProperties() {
     pageProperties = document.querySelector('#page-properties');
 }
 
-
 function applyListeners() {
-    selectDOMPageProperties();
+    setDOMPageProperties();
     document.querySelectorAll('#page-properties input').forEach(element => {
         element.addEventListener('change', onPropertyChange);
+    });
+
+    document.querySelectorAll('.align').forEach(element => {
+        element.addEventListener('click', changeTextAlignment);
     });
 }
 
 
-function onPropertyChange(element) {
+function changeTextAlignment(e) {
+    let icons = document.querySelectorAll('.align');
+    icons[0].src = 'images/lnr-text-align-left.svg';
+    icons[1].src = 'images/lnr-text-align-center.svg';
+    icons[2].src = 'images/lnr-text-align-right.svg';
 
+    const textBox = document.querySelector('#number-box-1');
+    textBox.style.textAlign = e.target.id;
+    e.target.src = e.target.alt;
+    console.log(e);
+}
+
+function onPropertyChange(element) {
     paddingAmount = calculateLeftPadAmount();
     calculateScaleFactor();
     setCanvasPageSize();
     updateMargins();
+    updateNumberBox();
 
     if (element.target.id === 'left-pad') {
         leftPadIsChecked = element.target.checked;
     }
 
     if (leftPadIsChecked) {
-
+        document.querySelector('#number-box-1').innerHTML = leftPad(getStartingNumber());
     }
 }
 
@@ -84,6 +99,10 @@ function updateMargins() {
     marginCalculate();
 }
 
+function getStartingNumber() {
+    return pageProperties.querySelector('#start').value;
+}
+
 function getRows() {
     return getValueAsInt('#rows');
 }
@@ -101,6 +120,7 @@ function getMargins() {
     const left = actualMarginLeft * scaleFactor;
     const bottom = actualMarginBottom * scaleFactor;
     const right = actualMarginRight * scaleFactor;
+
     return { top, left, bottom, right, actualMarginTop, actualMarginLeft, actualMarginBottom, actualMarginRight };
 }
 
@@ -135,17 +155,63 @@ function marginCalculate() {
 function calculateScaleFactor() {
     const canvas = getCanvasAreaDimensions();
     const page = getPageDimensions();
-    scaleFactor = (page.height >= page.width) ? ((canvas.height - scaleFactor) / (page.height / scaleFactor)) : ((canvas.width - scaleFactor) / (page.width / scaleFactor));
+    const condition = (page.height >= page.width);
+    const ifTrue = ((canvas.height - scaleFactor) / (page.height / scaleFactor));
+    const ifFalse = ((canvas.width - scaleFactor) / (page.width / scaleFactor))
+
+    scaleFactor = (page.height >= page.width) ? ifTrue : ifFalse;
 }
 
-window.onresize = function() {
+
+
+function createNumberBox() {
+    const columns = getColumns();
+    const rows = getRows();
+    const pageSize = getPageDimensions();
+    const margin = getMargins();
+    const page = document.querySelector('#canvas-page');
+
+    let box = document.createElement('div');
+    box.id = 'number-box-1';
+    box.style.width = (pageSize.width / columns) - (margin.left + margin.right) + 'px';
+    box.style.height = (pageSize.height / rows) - (margin.top + margin.bottom) + 'px';
+    page.appendChild(box);
+    updateNumberBox();
+}
+
+function updateNumberBox() {
+    const columns = getColumns();
+    const rows = getRows();
+    const pageSize = getPageDimensions();
+    const margin = getMargins();
+
+    let box = document.querySelector('#number-box-1');
+    box.style.width = (pageSize.width / columns) - (margin.left + margin.right) + 'px';
+    box.style.height = (pageSize.height / rows) - (margin.top + margin.bottom) + 'px';
+    box.style.position = 'absolute';
+    box.style.top = margin.top + 'px';
+    box.style.left = margin.left + 'px';
+    box.style.border = '1px';
+    box.style.borderStyle = 'solid';
+    box.style.borderColor = 'green';
+    box.style.backgroundColor = '#d7d7d7';
+    box.style.color = 'black';
+    box.innerHTML = pageProperties.querySelector('#start').value;
+}
+
+
+
+(function onInit() {
+    window.onresize = function() {
+        calculateScaleFactor();
+        setCanvasPageSize();
+        updateMargins();
+        updateNumberBox();
+    }
+
+    applyListeners();
     calculateScaleFactor();
     setCanvasPageSize();
     updateMargins();
-}
-
-
-applyListeners();
-calculateScaleFactor();
-setCanvasPageSize();
-updateMargins();
+    createNumberBox();
+}());

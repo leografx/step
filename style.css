@@ -124,7 +124,7 @@ div>h6 {
 
 #canvas-area #canvas-page {
     position: relative;
-    background: #d7d7d7;
+    background: #fff;
 }
 
 #page-margin-left {
@@ -133,7 +133,7 @@ div>h6 {
     top: 0px;
     width: 0px;
     height: 100%;
-    background-color: #fed2d2;
+    background-color: #f9f0f0;
 }
 
 #page-margin-right {
@@ -142,7 +142,7 @@ div>h6 {
     top: 0px;
     width: 0px;
     height: 100%;
-    background-color: #fed2d2;
+    background-color: #f9f0f0;
 }
 
 #page-margin-top {
@@ -151,7 +151,7 @@ div>h6 {
     left: 0px;
     width: 100%;
     height: 0px;
-    background-color: #fed2d2;
+    background-color: #f9f0f0;
 }
 
 #page-margin-bottom {
@@ -160,5 +160,9 @@ div>h6 {
     left: 0px;
     width: 100%;
     height: 0px;
-    background-color: #fed2d2;
+    background-color: #f9f0f0;
+}
+
+#number-box-1 {
+    position: absolute;
 }
