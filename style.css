@@ -166,3 +166,11 @@ div>h6 {
 #number-box-1 {
     position: absolute;
 }
+
+#font-color {
+    height: 40px;
+}
+
+#page-properties {
+    overflow: auto;
+}

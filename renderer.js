@@ -28,7 +28,6 @@ function changeTextAlignment(e) {
     const textBox = document.querySelector('#number-box-1');
     textBox.style.textAlign = e.target.id;
     e.target.src = e.target.alt;
-    console.log(e);
 }
 
 function onPropertyChange(element) {
@@ -37,14 +36,6 @@ function onPropertyChange(element) {
     setCanvasPageSize();
     updateMargins();
     updateNumberBox();
-
-    if (element.target.id === 'left-pad') {
-        leftPadIsChecked = element.target.checked;
-    }
-
-    if (leftPadIsChecked) {
-        document.querySelector('#number-box-1').innerHTML = leftPad(getStartingNumber());
-    }
 }
 
 function calculateLeftPadAmount() {
@@ -101,6 +92,18 @@ function updateMargins() {
 
 function getStartingNumber() {
     return pageProperties.querySelector('#start').value;
+}
+
+function getPrefix() {
+    return pageProperties.querySelector('#prefix').value;
+}
+
+function getFontColor() {
+    return pageProperties.querySelector('#font-color').value;
+}
+
+function getPostfix() {
+    return pageProperties.querySelector('#postfix').value;
 }
 
 function getRows() {
@@ -184,7 +187,7 @@ function updateNumberBox() {
     const rows = getRows();
     const pageSize = getPageDimensions();
     const margin = getMargins();
-
+    const fontSize = getValueAsFloat('#font-size');
     let box = document.querySelector('#number-box-1');
     box.style.width = (pageSize.width / columns) - (margin.left + margin.right) + 'px';
     box.style.height = (pageSize.height / rows) - (margin.top + margin.bottom) + 'px';
@@ -195,8 +198,18 @@ function updateNumberBox() {
     box.style.borderStyle = 'solid';
     box.style.borderColor = 'green';
     box.style.backgroundColor = '#d7d7d7';
-    box.style.color = 'black';
-    box.innerHTML = pageProperties.querySelector('#start').value;
+    box.style.color = getFontColor();
+    box.style.fontSize = ((fontSize * scaleFactor) / 72) + 'px';
+    console.log(box.style.fontSize);
+    const prefix = getPrefix() || '';
+    const postfix = getPostfix() || '';
+
+    if (document.querySelector('#left-pad').checked) {
+        box.innerHTML = `${prefix}${leftPad(getStartingNumber())}${postfix}`;
+    } else {
+        box.innerHTML = `${prefix}${getValueAsInt('#start')}${postfix}`;
+    }
+
 }
 
 
