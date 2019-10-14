@@ -174,3 +174,12 @@ div>h6 {
 #page-properties {
     overflow: auto;
 }
+
+
+section#toggle-numbering, section#toggle-textformat, section#toggle-append, section#toggle-margins {
+    display: none;
+}
+
+.chevron {
+    height: 16px;
+}

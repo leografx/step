@@ -9,6 +9,11 @@ function setDOMPageProperties() {
 
 function applyListeners() {
     setDOMPageProperties();
+    document.querySelector('#numbering').addEventListener("click", toggle);
+    document.querySelector('#textformat').addEventListener("click", toggle);
+    document.querySelector('#append').addEventListener("click", toggle);
+    document.querySelector('#margins').addEventListener("click", toggle);
+
     document.querySelectorAll('#page-properties input').forEach(element => {
         element.addEventListener('change', onPropertyChange);
     });
@@ -18,6 +23,21 @@ function applyListeners() {
     });
 }
 
+function toggle(e) {
+    const section = document.getElementById('toggle-' + e.target.id);
+    const chevronRight = 'images/lnr-chevron-right.svg';
+    const chevronDown = 'images/lnr-chevron-down.svg';
+
+    console.log(section.style.display, e);
+    if (section.style.display !== 'grid') {
+        section.style.display = 'grid';
+        e.target.src = chevronDown;
+    } else {
+        section.style.display = 'none';
+        e.target.src = chevronRight;
+    }
+
+}
 
 function changeTextAlignment(e) {
     let icons = document.querySelectorAll('.align');
@@ -200,7 +220,6 @@ function updateNumberBox() {
     box.style.backgroundColor = '#d7d7d7';
     box.style.color = getFontColor();
     box.style.fontSize = ((fontSize * scaleFactor) / 72) + 'px';
-    console.log(box.style.fontSize);
     const prefix = getPrefix() || '';
     const postfix = getPostfix() || '';
 
@@ -215,7 +234,7 @@ function updateNumberBox() {
 
 
 (function onInit() {
-    window.onresize = function() {
+    window.onresize = function () {
         calculateScaleFactor();
         setCanvasPageSize();
         updateMargins();

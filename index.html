@@ -32,51 +32,6 @@
                 <input type="number" name="height" max="19.00" min="1" step=".125" id="height" value="11.00">
             </div>
 
-            <h6>Numbering</h6>
-            <div class="input-group-l">
-                <label for="quantity">Quantity</label>
-                <input type="number" name="quantity" min="1" step="1" id="quantity" value="1">
-            </div>
-            <div class="input-group-l">
-                <label for="start">Starting #</label>
-                <input type="number" name="start" min="1" step="1" id="start" value="1001">
-            </div>
-
-            <h6>Alignment</h6>
-            <div class="input-group">
-                <label for="">Align</label>
-                <div>
-                    <img class="align" id="left" src="images/lnr-text-align-left-active.svg" alt="images/lnr-text-align-left-active.svg">
-                    <img class="align" id="center" src="images/lnr-text-align-center.svg" alt="images/lnr-text-align-center-active.svg">
-                    <img class="align" id="right" src="images/lnr-text-align-right.svg" alt="images/lnr-text-align-right-active.svg">
-                </div>
-            </div>
-            <div class="input-group-l">
-                <label for="font-size">Font Size</label>
-                <input type="number" name="font-size" min="1.00" step="1" id="font-size" value="14.0">
-            </div>
-            <div class="input-group-l">
-                <label for="font-color">Font Color</label>
-                <input type="color" name="font-color" id="font-color" value="black">
-            </div>
-
-            <div class="input-group-l">
-                <label for="left-pad">Left Pad</label>
-                <input type="checkbox" name="left-pad" id="left-pad" />
-            </div>
-
-            <h6>Append</h6>
-            <div class="col-2">
-                <div>
-                    <label for="prefix">Prefix</label>
-                    <input type="text" name="prefix" id="prefix" value="">
-                </div>
-                <div>
-                    <label for="postfix">Postfix</label>
-                    <input type="text" name="postfix" id="postfix" value="">
-                </div>
-            </div>
-
             <h6>Stepping</h6>
             <div class="col-2">
                 <div>
@@ -89,21 +44,85 @@
                 </div>
             </div>
 
-            <h6>Margins</h6>
-            <div class="col-2">
-                <div>
-                    <label for="margin-top">Top</label>
-                    <input type="number" name="margin-top" min="0" max="19" step=".125" id="margin-top" value=".25">
-                    <label for="margin-left">Left</label>
-                    <input type="number" name="margin-left" min="0" max="19" step=".125" id="margin-left" value=".25">
+            <h6>
+                <img class="chevron" id="numbering" src="images/lnr-chevron-right.svg" alt="numbering" />
+                Numbering
+            </h6>
+            <section id="toggle-numbering">
+                <div class="input-group-l">
+                    <label for="quantity">Quantity</label>
+                    <input type="number" name="quantity" min="1" step="1" id="quantity" value="1000">
                 </div>
-                <div>
-                    <label for="margin-bottom">Bottom</label>
-                    <input type="number" name="margin-bottom" min="0" max="19" step=".125" id="margin-bottom" value=".25">
-                    <label for="margin-right">Right</label>
-                    <input type="number" name="margin-right" min="0" max="19" step=".125" id="margin-right" value=".25">
+                <div class="input-group-l">
+                    <label for="start">Starting #</label>
+                    <input type="number" name="start" min="1" step="1" id="start" value="1001">
                 </div>
-            </div>
+                <div class="input-group-l">
+                    <label for="left-pad">Left Pad</label>
+                    <input type="checkbox" name="left-pad" id="left-pad" />
+                </div>
+            </section>
+
+            <h6> <img class="chevron" id="textformat" src="images/lnr-chevron-right.svg" alt="text" /> Text</h6>
+            <section id="toggle-textformat">
+                <div class="input-group">
+                    <label for="">Align</label>
+                    <div>
+                        <img class="align" id="left" src="images/lnr-text-align-left-active.svg"
+                            alt="images/lnr-text-align-left-active.svg">
+                        <img class="align" id="center" src="images/lnr-text-align-center.svg"
+                            alt="images/lnr-text-align-center-active.svg">
+                        <img class="align" id="right" src="images/lnr-text-align-right.svg"
+                            alt="images/lnr-text-align-right-active.svg">
+                    </div>
+                </div>
+                <div class="input-group-l">
+                    <label for="font-size">Font Size</label>
+                    <input type="number" name="font-size" min="1.00" step="1" id="font-size" value="14.0">
+                </div>
+                <div class="input-group-l">
+                    <label for="font-color">Font Color</label>
+                    <input type="color" name="font-color" id="font-color" value="#000000">
+                </div>
+
+            </section>
+
+            <h6> <img class="chevron" id="append" src="images/lnr-chevron-right.svg" alt="append" /> Append</h6>
+            <section id="toggle-append">
+                <div class="col-2">
+                    <div>
+                        <label for="prefix">Prefix</label>
+                        <input type="text" name="prefix" id="prefix" value="">
+                    </div>
+                    <div>
+                        <label for="postfix">Postfix</label>
+                        <input type="text" name="postfix" id="postfix" value="">
+                    </div>
+                </div>
+            </section>
+
+
+
+            <h6> <img class="chevron" id="margins" src="images/lnr-chevron-right.svg" alt="margins" /> Margins</h6>
+            <section id="toggle-margins">
+                <div class="col-2">
+                    <div>
+                        <label for="margin-top">Top</label>
+                        <input type="number" name="margin-top" min="0" max="19" step=".125" id="margin-top" value=".25">
+                        <label for="margin-left">Left</label>
+                        <input type="number" name="margin-left" min="0" max="19" step=".125" id="margin-left"
+                            value=".25">
+                    </div>
+                    <div>
+                        <label for="margin-bottom">Bottom</label>
+                        <input type="number" name="margin-bottom" min="0" max="19" step=".125" id="margin-bottom"
+                            value=".25">
+                        <label for="margin-right">Right</label>
+                        <input type="number" name="margin-right" min="0" max="19" step=".125" id="margin-right"
+                            value=".25">
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
 
