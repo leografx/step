@@ -8,6 +8,11 @@
     src: url('fonts/SF-Pro-Text-Bold.otf');
 }
 
+@font-face {
+    font-family: 'SFSemiBold';
+    src: url('fonts/SF-Pro-Display-Semibold.otf');
+}
+
 * {
     margin: 0px;
     padding: 0px;
@@ -95,12 +100,12 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'SFBold', sans-serif;
+    font-family: 'SFRegular', sans-serif;
     margin: 10px;
 }
 
 h6 {
-    font-size: 18px;
+    font-size: 14px;
 }
 
 div>h6 {
