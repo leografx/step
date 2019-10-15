@@ -13,13 +13,28 @@
     <div class="main-container">
 
         <div id="canvas-area" class="item" style="width: 100%; height: 100%;">
+
             <div id="canvas-page">
-                <div class="trim-size">
+                <div id="canvas-margin-top"></div>
+                <div id="canvas-margin-left"></div>
+                <div id="trim-area">
+                    <div style="border: 1px solid silver;">1</div>
+                    <div style="border: 1px solid silver;">2</div>
+                    <div style="border: 1px solid silver;">3</div>
+                    <div style="border: 1px solid silver;">4</div>
+                    <div style="border: 1px solid silver;">5</div>
+                    <div style="border: 1px solid silver;">6</div>
+                    <div style="border: 1px solid silver;">7</div>
+                    <div style="border: 1px solid silver;">8</div>
+                </div>
+                <div id="canvas-margin-right"></div>
+                <div id="canvas-margin-bottom"></div>
+                <!-- <div class="trim-size">
                     <div id="page-margin-top">&nbsp;</div>
                     <div id="page-margin-left">&nbsp;</div>
                     <div id="page-margin-right">&nbsp;</div>
                     <div id="page-margin-bottom">&nbsp;</div>
-                </div>
+                </div> -->
             </div>
         </div>
 
@@ -36,10 +51,28 @@
                 <label for="height">Height</label>
                 <input type="number" name="height" max="19.00" min="1" step=".125" id="height" value="11.00">
             </div>
+            <div id="trim-size" class="collapsible-trigger">
+                <img class="chevron" src="images/lnr-chevron-right.svg" alt="trim-size" />
+                <span>Trim Size</span>
+            </div>
+            <section id="toggle-trim-size">
+                <div class="col-2">
+                    <div>
+                        <label for="trim-size-w">Width</label>
+                        <input type="number" name="trim_size_w" min="0.5" id="trim-size-w" value="3.50">
+                    </div>
+                    <div>
+                        <label for="rows">Height</label>
+                        <input type="number" name="trim_size_h" min="0.5" id="trim-size-h" value="2.00">
+                    </div>
+                </div>
+            </section>
+
             <div id="stepping" class="collapsible-trigger">
                 <img class="chevron" src="images/lnr-chevron-right.svg" alt="stepping" />
-                <span>Stepping</span>
+                <span>Step & Repeat</span>
             </div>
+
             <section id="toggle-stepping">
                 <div class="col-2">
                     <div>
@@ -52,6 +85,7 @@
                     </div>
                 </div>
             </section>
+
             <div id="numbering" class="collapsible-trigger">
                 <img class="chevron" src="images/lnr-chevron-right.svg" alt="numbering" />
                 <span>Numbering</span>
@@ -79,9 +113,12 @@
                 <div class="input-group">
                     <label for="">Align</label>
                     <div>
-                        <img class="align" id="left" src="images/lnr-text-align-left-active.svg" alt="images/lnr-text-align-left-active.svg">
-                        <img class="align" id="center" src="images/lnr-text-align-center.svg" alt="images/lnr-text-align-center-active.svg">
-                        <img class="align" id="right" src="images/lnr-text-align-right.svg" alt="images/lnr-text-align-right-active.svg">
+                        <img class="align" id="left" src="images/lnr-text-align-left-active.svg"
+                            alt="images/lnr-text-align-left-active.svg">
+                        <img class="align" id="center" src="images/lnr-text-align-center.svg"
+                            alt="images/lnr-text-align-center-active.svg">
+                        <img class="align" id="right" src="images/lnr-text-align-right.svg"
+                            alt="images/lnr-text-align-right-active.svg">
                     </div>
                 </div>
                 <div class="input-group-l">
@@ -124,13 +161,16 @@
                         <label for="margin-top">Top</label>
                         <input type="number" name="margin-top" min="0" max="19" step=".125" id="margin-top" value=".25">
                         <label for="margin-left">Left</label>
-                        <input type="number" name="margin-left" min="0" max="19" step=".125" id="margin-left" value=".25">
+                        <input type="number" name="margin-left" min="0" max="19" step=".125" id="margin-left"
+                            value=".25">
                     </div>
                     <div>
                         <label for="margin-bottom">Bottom</label>
-                        <input type="number" name="margin-bottom" min="0" max="19" step=".125" id="margin-bottom" value=".25">
+                        <input type="number" name="margin-bottom" min="0" max="19" step=".125" id="margin-bottom"
+                            value=".25">
                         <label for="margin-right">Right</label>
-                        <input type="number" name="margin-right" min="0" max="19" step=".125" id="margin-right" value=".25">
+                        <input type="number" name="margin-right" min="0" max="19" step=".125" id="margin-right"
+                            value=".25">
                     </div>
                 </div>
             </section>

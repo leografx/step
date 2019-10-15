@@ -9,11 +9,9 @@ function setDOMPageProperties() {
 
 function applyListeners() {
     setDOMPageProperties();
-    document.querySelector('#stepping').addEventListener("click", toggle);
-    document.querySelector('#numbering').addEventListener("click", toggle);
-    document.querySelector('#text-format').addEventListener("click", toggle);
-    document.querySelector('#append').addEventListener("click", toggle);
-    document.querySelector('#margins').addEventListener("click", toggle);
+    document.querySelectorAll('.collapsible-trigger').forEach(element => {
+        element.addEventListener('click', toggle);
+    });
 
     document.querySelectorAll('#page-properties input').forEach(element => {
         element.addEventListener('change', onPropertyChange);
@@ -239,7 +237,7 @@ function updateNumberBox() {
 
 
 (function onInit() {
-    window.onresize = function() {
+    window.onresize = function () {
         calculateScaleFactor();
         setCanvasPageSize();
         updateMargins();
