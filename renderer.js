@@ -9,8 +9,9 @@ function setDOMPageProperties() {
 
 function applyListeners() {
     setDOMPageProperties();
+    document.querySelector('#stepping').addEventListener("click", toggle);
     document.querySelector('#numbering').addEventListener("click", toggle);
-    document.querySelector('#textformat').addEventListener("click", toggle);
+    document.querySelector('#text-format').addEventListener("click", toggle);
     document.querySelector('#append').addEventListener("click", toggle);
     document.querySelector('#margins').addEventListener("click", toggle);
 
@@ -24,19 +25,23 @@ function applyListeners() {
 }
 
 function toggle(e) {
-    const section = document.getElementById('toggle-' + e.target.id);
+    const section = document.getElementById('toggle-' + e.target.parentNode.id);
     const chevronRight = 'images/lnr-chevron-right.svg';
     const chevronDown = 'images/lnr-chevron-down.svg';
 
-    console.log(section.style.display, e);
-    if (section.style.display !== 'grid') {
-        section.style.display = 'grid';
-        e.target.src = chevronDown;
-    } else {
-        section.style.display = 'none';
-        e.target.src = chevronRight;
+    try {
+        if (section.style.display !== 'grid') {
+            section.style.display = 'grid';
+            e.target.parentNode.firstElementChild.src = chevronDown;
+            e.target.parentNode.style.borderBottom = '0px';
+        } else {
+            section.style.display = 'none';
+            e.target.parentNode.firstElementChild.src = chevronRight;
+            e.target.parentNode.style.borderBottom = '1px solid #2A2A2A';
+        }
+    } catch {
+        console.log('Oops!');
     }
-
 }
 
 function changeTextAlignment(e) {
@@ -234,7 +239,7 @@ function updateNumberBox() {
 
 
 (function onInit() {
-    window.onresize = function () {
+    window.onresize = function() {
         calculateScaleFactor();
         setCanvasPageSize();
         updateMargins();

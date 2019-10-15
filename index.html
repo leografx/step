@@ -14,15 +14,20 @@
 
         <div id="canvas-area" class="item" style="width: 100%; height: 100%;">
             <div id="canvas-page">
-                <div id="page-margin-top">&nbsp;</div>
-                <div id="page-margin-left">&nbsp;</div>
-                <div id="page-margin-right">&nbsp;</div>
-                <div id="page-margin-bottom">&nbsp;</div>
+                <div class="trim-size">
+                    <div id="page-margin-top">&nbsp;</div>
+                    <div id="page-margin-left">&nbsp;</div>
+                    <div id="page-margin-right">&nbsp;</div>
+                    <div id="page-margin-bottom">&nbsp;</div>
+                </div>
             </div>
         </div>
 
         <div id="page-properties">
-            <h6>Page Dimensions</h6>
+            <div class="collapsible-trigger">
+                <img class="chevron" src="images/lnr-file-empty.svg" alt="page">
+                <span>Page Dimensions</span>
+            </div>
             <div class="input-group">
                 <label for="width">Width</label>
                 <input type="number" name="width" max="19.00" min="1" step=".125" id="width" value="8.50">
@@ -31,23 +36,27 @@
                 <label for="height">Height</label>
                 <input type="number" name="height" max="19.00" min="1" step=".125" id="height" value="11.00">
             </div>
-
-            <h6>Stepping</h6>
-            <div class="col-2">
-                <div>
-                    <label for="columns">Columns</label>
-                    <input type="number" name="columns" min="1" id="columns" value="2">
+            <div id="stepping" class="collapsible-trigger">
+                <img class="chevron" src="images/lnr-chevron-right.svg" alt="stepping" />
+                <span>Stepping</span>
+            </div>
+            <section id="toggle-stepping">
+                <div class="col-2">
+                    <div>
+                        <label for="columns">Columns</label>
+                        <input type="number" name="columns" min="1" id="columns" value="2">
+                    </div>
+                    <div>
+                        <label for="rows">Rows</label>
+                        <input type="number" name="rows" min="1" id="rows" value="4">
+                    </div>
                 </div>
-                <div>
-                    <label for="rows">Rows</label>
-                    <input type="number" name="rows" min="1" id="rows" value="4">
-                </div>
+            </section>
+            <div id="numbering" class="collapsible-trigger">
+                <img class="chevron" src="images/lnr-chevron-right.svg" alt="numbering" />
+                <span>Numbering</span>
             </div>
 
-            <h6>
-                <img class="chevron" id="numbering" src="images/lnr-chevron-right.svg" alt="numbering" />
-                Numbering
-            </h6>
             <section id="toggle-numbering">
                 <div class="input-group-l">
                     <label for="quantity">Quantity</label>
@@ -62,32 +71,34 @@
                     <input type="checkbox" name="left-pad" id="left-pad" />
                 </div>
             </section>
-
-            <h6> <img class="chevron" id="textformat" src="images/lnr-chevron-right.svg" alt="text" /> Text</h6>
-            <section id="toggle-textformat">
+            <div id="text-format" class="collapsible-trigger">
+                <img class="chevron" src="images/lnr-chevron-right.svg" alt="text" />
+                <span>Text</span>
+            </div>
+            <section id="toggle-text-format">
                 <div class="input-group">
                     <label for="">Align</label>
                     <div>
-                        <img class="align" id="left" src="images/lnr-text-align-left-active.svg"
-                            alt="images/lnr-text-align-left-active.svg">
-                        <img class="align" id="center" src="images/lnr-text-align-center.svg"
-                            alt="images/lnr-text-align-center-active.svg">
-                        <img class="align" id="right" src="images/lnr-text-align-right.svg"
-                            alt="images/lnr-text-align-right-active.svg">
+                        <img class="align" id="left" src="images/lnr-text-align-left-active.svg" alt="images/lnr-text-align-left-active.svg">
+                        <img class="align" id="center" src="images/lnr-text-align-center.svg" alt="images/lnr-text-align-center-active.svg">
+                        <img class="align" id="right" src="images/lnr-text-align-right.svg" alt="images/lnr-text-align-right-active.svg">
                     </div>
                 </div>
                 <div class="input-group-l">
-                    <label for="font-size">Font Size</label>
+                    <label for="font-size">Size</label>
                     <input type="number" name="font-size" min="1.00" step="1" id="font-size" value="14.0">
                 </div>
                 <div class="input-group-l">
-                    <label for="font-color">Font Color</label>
+                    <label for="font-color">Color</label>
                     <input type="color" name="font-color" id="font-color" value="#000000">
                 </div>
 
             </section>
 
-            <h6> <img class="chevron" id="append" src="images/lnr-chevron-right.svg" alt="append" /> Append</h6>
+            <div id="append" class="collapsible-trigger">
+                <img class="chevron" src="images/lnr-chevron-right.svg" alt="append" />
+                <span>Append</span>
+            </div>
             <section id="toggle-append">
                 <div class="col-2">
                     <div>
@@ -102,24 +113,24 @@
             </section>
 
 
+            <div id="margins" class="collapsible-trigger">
+                <img class="chevron" src="images/lnr-chevron-right.svg" alt="margins" />
+                <span>Margins</span>
+            </div>
 
-            <h6> <img class="chevron" id="margins" src="images/lnr-chevron-right.svg" alt="margins" /> Margins</h6>
             <section id="toggle-margins">
                 <div class="col-2">
                     <div>
                         <label for="margin-top">Top</label>
                         <input type="number" name="margin-top" min="0" max="19" step=".125" id="margin-top" value=".25">
                         <label for="margin-left">Left</label>
-                        <input type="number" name="margin-left" min="0" max="19" step=".125" id="margin-left"
-                            value=".25">
+                        <input type="number" name="margin-left" min="0" max="19" step=".125" id="margin-left" value=".25">
                     </div>
                     <div>
                         <label for="margin-bottom">Bottom</label>
-                        <input type="number" name="margin-bottom" min="0" max="19" step=".125" id="margin-bottom"
-                            value=".25">
+                        <input type="number" name="margin-bottom" min="0" max="19" step=".125" id="margin-bottom" value=".25">
                         <label for="margin-right">Right</label>
-                        <input type="number" name="margin-right" min="0" max="19" step=".125" id="margin-right"
-                            value=".25">
+                        <input type="number" name="margin-right" min="0" max="19" step=".125" id="margin-right" value=".25">
                     </div>
                 </div>
             </section>

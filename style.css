@@ -105,10 +105,11 @@ h6 {
 }
 
 h6 {
-    font-size: 14px;
+    font-size: 12px;
 }
 
-div>h6 {
+h6 {
+    display: inline;
     border-bottom: 1px solid #2A2A2A;
     margin-bottom: 10px;
     padding-bottom: 5px;
@@ -121,6 +122,12 @@ div>h6 {
 
 .input-group-l input[type=number] {
     width: 150px;
+}
+
+.input-group label,
+.input-group-l label {
+    font-size: 13px;
+    margin-left: 25px;
 }
 
 .col-2 div input {
@@ -180,11 +187,40 @@ div>h6 {
     overflow: auto;
 }
 
-
-section#toggle-numbering, section#toggle-textformat, section#toggle-append, section#toggle-margins {
+section#toggle-numbering,
+section#toggle-text-format,
+section#toggle-append,
+section#toggle-margins,
+section#toggle-stepping {
+    border-bottom: 1px solid #2A2A2A;
     display: none;
 }
 
 .chevron {
-    height: 16px;
+    height: 11px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+div>span {
+    color: #707070;
+    font-size: 14px;
+}
+
+#numbering,
+#text-format,
+#append,
+#margins {
+    cursor: pointer;
+}
+
+.collapsible-trigger {
+    margin: 10px 0px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #2A2A2A;
+    cursor: pointer;
+}
+
+.collapsible-trigger span:hover {
+    color: #ffffff;
 }
