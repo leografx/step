@@ -14,7 +14,7 @@ function applyListeners() {
     });
 
     document.querySelectorAll('#page-properties input').forEach(element => {
-        element.addEventListener('change', onPropertyChange);
+        element.addEventListener('change', onChange);
     });
 
     document.querySelectorAll('.align').forEach(element => {
@@ -53,12 +53,12 @@ function changeTextAlignment(e) {
     e.target.src = e.target.alt;
 }
 
-function onPropertyChange(element) {
+function onChange() {
     paddingAmount = calculateLeftPadAmount();
     calculateScaleFactor();
     setCanvasPageSize();
-    updateMargins();
-    updateNumberBox();
+    // updateMargins();
+    // updateNumberBox();
 }
 
 function calculateLeftPadAmount() {
@@ -238,15 +238,14 @@ function updateNumberBox() {
 
 (function onInit() {
     window.onresize = function () {
-        calculateScaleFactor();
-        setCanvasPageSize();
-        updateMargins();
-        updateNumberBox();
+        onChange();
     }
 
     applyListeners();
-    calculateScaleFactor();
-    setCanvasPageSize();
-    updateMargins();
-    createNumberBox();
+
+    // calculateScaleFactor();
+    // setCanvasPageSize();
+    // updateMargins();
+    // createNumberBox();
+    onChange();
 }());
