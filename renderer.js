@@ -93,6 +93,10 @@ function centerPageInViewPort() {
     const pageSize = getPageDimensions();
     document.querySelector('#canvas-page').style.marginLeft = (canvasArea.width - pageSize.width) / 2 + 'px';
     document.querySelector('#canvas-page').style.marginTop = (canvasArea.height - pageSize.height) / 2 + 'px';
+    // document.querySelector('#canvas-page').style.marginLeft = 'auto';
+    // document.querySelector('#canvas-page').style.marginRight = 'auto';
+    // document.querySelector('#canvas-page').style.marginTop = 'auto';
+    // document.querySelector('#canvas-page').style.marginBottom = 'auto';
 }
 
 function changeTextAlignment(e) {
@@ -101,7 +105,7 @@ function changeTextAlignment(e) {
     icons[1].src = 'images/lnr-text-align-center.svg';
     icons[2].src = 'images/lnr-text-align-right.svg';
 
-    const textBox = document.querySelector('#number-box-1');
+    const textBox = document.querySelector('.item');
     textBox.style.textAlign = e.target.id;
     e.target.src = e.target.alt;
 }
@@ -113,8 +117,8 @@ function onChange() {
     paddingAmount = calculateLeftPadAmount();
     calculateScaleFactor();
     setCanvasPageSize();
-    centerPageInViewPort();
     createLayout();
+    centerPageInViewPort();
 }
 
 function setCanvasPageSize() {
@@ -151,8 +155,11 @@ function createLayout() {
     const boxCount = columns * rows;
     const trimSize = getTrimSize();
     const gutters = getGutters();
-    const margins = getMargins();
+    // const margins = getMargins();
     let start = getStartingNumber();
+    const prefix = getPrefix();
+    const postfix = getPostfix();
+
 
     let trimArea = `<div class="trim-area" id="trim-area" style="display:grid; 
     grid-template-columns:repeat(${columns}, ${trimSize.width}px);
@@ -162,11 +169,24 @@ function createLayout() {
     "></div>`;
     let divBox = '';
     for (let i = 0; i < boxCount; i++) {
-        divBox += `<div class="item"> ${start++} </div>`;
+        divBox += `<div class="item"> <div>${prefix}${start++}${postfix}</div> </div>`;
     }
     document.querySelector('#canvas-page').innerHTML = trimArea;
     document.querySelector('#trim-area').innerHTML = divBox;
     calculateMargins();
+    itemTextChange();
+
+}
+
+function itemTextChange() {
+    const fontSize = getValueAsFloat('#font-size');
+    // console.log(fontSize / 72 * scaleFactor);
+    document.querySelectorAll('.item').forEach(element => {
+        element.firstElementChild.style.fontSize = ((fontSize / 72) * scaleFactor) + 'px';
+        element.firstElementChild.style.color = getFontColor();
+        element.firstElementChild.style.marginLeft = getMargins().left + 'px';
+        element.firstElementChild.style.marginTop = getMargins().top + 'px';
+    });
 }
 
 function calculateMargins() {
@@ -174,26 +194,26 @@ function calculateMargins() {
     const rows = getRows();
     const trimSize = getTrimSize();
     const gutters = getGutters();
-    const margins = getMargins();
+    //const margins = getMargins();
     const page = getPageDimensions()
 
     let marginSum = page.width;
     marginSum -= (gutters.x * (columns - 1)) + (trimSize.width * columns);
     marginSum /= 2;
-    console.log(marginSum)
+    // console.log(marginSum)
     document.querySelector('#trim-area').style.marginLeft = marginSum + 'px';
     document.querySelector('#trim-area').style.marginRight = marginSum + 'px';
 
     let marginTopSum = page.height;
     marginTopSum -= (gutters.y * (rows - 1)) + (trimSize.height * rows);
     marginTopSum /= 2;
-    console.log(marginSum)
+    // console.log(marginSum)
     document.querySelector('#trim-area').style.marginTop = marginTopSum + 'px';
     document.querySelector('#trim-area').style.marginBottom = marginTopSum + 'px';
 }
 
 (function onInit() {
-    window.onresize = function() {
+    window.onresize = function () {
         onChange();
     }
 
