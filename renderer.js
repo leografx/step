@@ -186,6 +186,8 @@ function itemTextChange() {
         element.firstElementChild.style.color = getFontColor();
         element.firstElementChild.style.marginLeft = getMargins().left + 'px';
         element.firstElementChild.style.marginTop = getMargins().top + 'px';
+        element.firstElementChild.style.marginRight = getMargins().right + 'px';
+        element.firstElementChild.style.marginBottom = getMargins().bottom + 'px';
     });
 }
 
