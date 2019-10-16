@@ -27,17 +27,23 @@
     outline: none;
 }
 
-.tool-bar-container {
-    display: grid;
-    grid-auto-columns: auto;
-    grid-auto-rows: 5vh;
-}
+
+/*********************** containers *************************/
 
 .main-container {
     display: grid;
     grid-template-columns: auto 360px;
     grid-auto-rows: 88vh;
 }
+
+.tool-bar-container {
+    display: grid;
+    grid-auto-columns: auto;
+    grid-auto-rows: 5vh;
+}
+
+
+/*********************** side properties *************************/
 
 .col-2 {
     display: grid;
@@ -49,9 +55,8 @@
     grid-template-rows: 20px auto 20px auto;
 }
 
-div {
-    /* border: 1px solid #2A2A2A; */
-}
+
+/*********************** footer *************************/
 
 .footer {
     display: grid;
@@ -59,12 +64,29 @@ div {
     grid-auto-rows: 5vh;
 }
 
+
+/*********************** canvas *************************/
+
 #canvas-area {
     width: 100%;
     height: 100%;
     background-color: #1B1B1B;
     overflow: auto;
 }
+
+#canvas-area #canvas-page {
+    position: relative;
+    background: #fff;
+}
+
+#canvas-page {
+    display: grid;
+    grid-template-rows: 48px auto;
+    background-color: #fff;
+}
+
+
+/*********************** input *************************/
 
 input {
     padding: 3px;
@@ -94,6 +116,24 @@ label {
     grid-template-columns: 100px auto;
 }
 
+.input-group-l {
+    display: grid;
+    grid-template-columns: 100px auto;
+}
+
+.input-group-l input[type=number] {
+    width: 150px;
+}
+
+.input-group label,
+.input-group-l label {
+    font-size: 13px;
+    margin-left: 25px;
+}
+
+
+/*********************** heading *************************/
+
 h1,
 h2,
 h3,
@@ -115,132 +155,19 @@ h6 {
     padding-bottom: 5px;
 }
 
-.input-group-l {
-    display: grid;
-    grid-template-columns: 100px auto;
-}
-
-.input-group-l input[type=number] {
-    width: 150px;
-}
-
-.input-group label,
-.input-group-l label {
-    font-size: 13px;
-    margin-left: 25px;
-}
-
 .col-2 div input {
     width: 150px;
 }
 
 
-#canvas-area #canvas-page {
-    position: relative;
-    background: #fff;
-}
-
-#canvas-page {
-    display:grid;
-    grid-template-rows: 48px auto;
-    background-color: #fff;
-}
-
-#margin-top{
-    background-color: #fff;
-}
-
-#trim-area {
-    display:grid;
-    grid-template-columns: repeat(2, 252px);
-    grid-template-rows: repeat(4,144px); 
-    background-color: #fff;
-    column-gap: 18px;
-    row-gap: 18px;
-    
-    margin-left: 28px;
-}
-
-/* #canvas-margin-top {
-    position: relative;
-    width:100%;
-    height: 18px;
-    background-color: red;
-} */
-
-/* #canvas-margin-left {
-    position: absolute;
-    top: 0px;
-    width:18px;
-    height: 100%;
-    background-color: red;
-} */
-
-/* #canvas-margin-right {
-    position: absolute;
-    right: 0px;
-    top: 0px;
-    width:18px;
-    height: 100%;
-    background-color: red;
-} */
-
-/* #canvas-margin-bottom {
-    position: absolute;
-    width: 100%;
-    left:0px;
-    bottom: 0px;
-    height: 18px;
-    background-color: red;
-} */
-
-#page-margin-left {
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    width: 0px;
-    height: 100%;
-    background-color: #f9f0f0;
-}
-
-#page-margin-right {
-    position: absolute;
-    right: 0px;
-    top: 0px;
-    width: 0px;
-    height: 100%;
-    background-color: #f9f0f0;
-}
-
-#page-margin-top {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 0px;
-    background-color: #f9f0f0;
-}
-
-#page-margin-bottom {
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    width: 100%;
-    height: 0px;
-    background-color: #f9f0f0;
-}
-
-#number-box-1 {
-    position: absolute;
-}
-
-#font-color {
-    height: 40px;
-}
+/*********************** page *************************/
 
 #page-properties {
     overflow: auto;
 }
+
+
+/*********************** sections *************************/
 
 section#toggle-numbering,
 section#toggle-text-format,
@@ -280,3 +207,29 @@ div>span {
 .collapsible-trigger span:hover {
     color: #ffffff;
 }
+
+#font-color {
+    height: 40px;
+}
+
+
+/*********************** margins *************************/
+
+
+/* #margin-top {
+    background-color: #fff;
+} */
+
+
+/* #trim-area {
+    display: grid;
+    grid-template-columns: repeat(2, 252px);
+    grid-template-rows: repeat(4, 144px);
+    background-color: #fff;
+    column-gap: 18px;
+    row-gap: 18px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-left: auto;
+    margin-right: auto;
+} */
