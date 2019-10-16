@@ -152,35 +152,44 @@ function createLayout() {
     const trimSize = getTrimSize();
     const gutters = getGutters();
     const margins = getMargins();
+    let start = getStartingNumber();
 
-    let divBox = `<div class="trim-area" id="trim-area" style="display:grid; 
+    let trimArea = `<div class="trim-area" id="trim-area" style="display:grid; 
     grid-template-columns:repeat(${columns}, ${trimSize.width}px);
     grid-template-rows: repeat(${rows}, ${trimSize.height}px);
     column-gap: ${gutters.x}px;
     row-gap: ${gutters.y}px;
-    margin-left:${margins.left}px;
-    margin-right:${margins.right}px;
-    margin-top:${margins.top}px;
-    margin-bottom:${margins.bottom}px;
-    ">`;
-
+    "></div>`;
+    let divBox = '';
     for (let i = 0; i < boxCount; i++) {
-        divBox += '<div class="item"></div>';
+        divBox += `<div class="item"> ${start++} </div>`;
     }
-    divBox += '</div>';
-    document.querySelector('#canvas-page').innerHTML = divBox;
-    // #trim-area {
-    //     display: grid;
-    //     grid-template-columns: repeat(2, 252px);
-    //     grid-template-rows: repeat(4, 144px);
-    //     background-color: #fff;
-    //     column-gap: 18px;
-    //     row-gap: 18px;
-    //     margin-top: 100px;
-    //     margin-bottom: 100px;
-    //     margin-left: auto;
-    //     margin-right: auto;
-    // }
+    document.querySelector('#canvas-page').innerHTML = trimArea;
+    document.querySelector('#trim-area').innerHTML = divBox;
+    calculateMargins();
+}
+
+function calculateMargins() {
+    const columns = getColumns();
+    const rows = getRows();
+    const trimSize = getTrimSize();
+    const gutters = getGutters();
+    const margins = getMargins();
+    const page = getPageDimensions()
+
+    let marginSum = page.width;
+    marginSum -= (gutters.x * (columns - 1)) + (trimSize.width * columns);
+    marginSum /= 2;
+    console.log(marginSum)
+    document.querySelector('#trim-area').style.marginLeft = marginSum + 'px';
+    document.querySelector('#trim-area').style.marginRight = marginSum + 'px';
+
+    let marginTopSum = page.height;
+    marginTopSum -= (gutters.y * (rows - 1)) + (trimSize.height * rows);
+    marginTopSum /= 2;
+    console.log(marginSum)
+    document.querySelector('#trim-area').style.marginTop = marginTopSum + 'px';
+    document.querySelector('#trim-area').style.marginBottom = marginTopSum + 'px';
 }
 
 (function onInit() {

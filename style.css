@@ -81,8 +81,9 @@
 
 #canvas-page {
     display: grid;
-    grid-template-rows: 48px auto;
+    grid-template-rows: 0px auto;
     background-color: #fff;
+    overflow: hidden;
 }
 
 
@@ -151,7 +152,6 @@ h6 {
 h6 {
     display: inline;
     border-bottom: 1px solid #2A2A2A;
-    margin-bottom: 10px;
     padding-bottom: 5px;
 }
 
@@ -232,4 +232,5 @@ div>span {
     margin-bottom: 100px;
     margin-left: auto;
     margin-right: auto;
+    grid-area: trim
 } */
