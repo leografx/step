@@ -74,12 +74,13 @@
     overflow: auto;
 }
 
-#canvas-area #canvas-page {
+
+/* #canvas-area #canvas-page-layer0 {
     position: relative;
     background: #fff;
-}
+} */
 
-#canvas-page {
+#canvas-page-layer0 {
     display: grid;
     grid-template-rows: 0px auto;
     background-color: #fff;

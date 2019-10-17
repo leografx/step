@@ -2,6 +2,10 @@ let pageProperties;
 let paddingAmount = 0;
 let leftPadIsChecked = false;
 let scaleFactor = 72;
+let activeLayer = 0;
+let layers = [
+    { name: 'layer0', margins: { left: 0, right: 0, top: 0, bottom: 0 } }
+];
 
 // getters
 function getColumns() { return getValueAsInt('#columns') }
@@ -27,10 +31,11 @@ function getTrimSize() {
 }
 
 function getMargins() {
-    const left = getValueAsFloat('#margin-left') * scaleFactor;
-    const right = getValueAsFloat('#margin-right') * scaleFactor;
-    const top = getValueAsFloat('#margin-top') * scaleFactor;
-    const bottom = getValueAsFloat('#margin-bottom') * scaleFactor;
+    const margins = layers[activeLayer].margins
+    const left = margins.left * scaleFactor;
+    const right = margins.right * scaleFactor;
+    const top = margins.top * scaleFactor;
+    const bottom = margins.bottom * scaleFactor;
 
     return { left, right, top, bottom };
 }
@@ -58,6 +63,13 @@ function getCanvasAreaDimensions() {
 
 // setters
 function setDOMPageProperties() { pageProperties = document.querySelector('#page-properties') }
+
+function setMargins() {
+    layers[activeLayer].margins.left = getValueAsFloat('#margin-left');
+    layers[activeLayer].margins.right = getValueAsFloat('#margin-right');
+    layers[activeLayer].margins.top = getValueAsFloat('#margin-top');
+    layers[activeLayer].margins.bottom = getValueAsFloat('#margin-bottom');
+}
 
 function applyListeners() {
     document.querySelectorAll('.collapsible-trigger').forEach(element => {
@@ -91,12 +103,10 @@ function calculateScaleFactor() {
 function centerPageInViewPort() {
     const canvasArea = getCanvasAreaDimensions();
     const pageSize = getPageDimensions();
-    document.querySelector('#canvas-page').style.marginLeft = (canvasArea.width - pageSize.width) / 2 + 'px';
-    document.querySelector('#canvas-page').style.marginTop = (canvasArea.height - pageSize.height) / 2 + 'px';
-    // document.querySelector('#canvas-page').style.marginLeft = 'auto';
-    // document.querySelector('#canvas-page').style.marginRight = 'auto';
-    // document.querySelector('#canvas-page').style.marginTop = 'auto';
-    // document.querySelector('#canvas-page').style.marginBottom = 'auto';
+
+    document.querySelector(`#canvas-page-${layers[activeLayer].name}`).style.marginLeft = (canvasArea.width - pageSize.width) / 2 + 'px';
+    document.querySelector(`#canvas-page-${layers[activeLayer].name}`).style.marginTop = (canvasArea.height - pageSize.height) / 2 + 'px';
+
 }
 
 function changeTextAlignment(e) {
@@ -114,6 +124,7 @@ function leftPad(value) { return (value.toString().length < paddingAmount) ? lef
 
 function onChange() {
     setDOMPageProperties();
+    setMargins();
     paddingAmount = calculateLeftPadAmount();
     calculateScaleFactor();
     setCanvasPageSize();
@@ -125,8 +136,8 @@ function setCanvasPageSize() {
     const page = getPageDimensions();
     const w = page.width;
     const h = page.height;
-    document.querySelector('#canvas-area #canvas-page').style.width = w + 'px';
-    document.querySelector('#canvas-area #canvas-page').style.height = h + 'px';
+    document.querySelector(`#canvas-area #canvas-page-${layers[activeLayer].name}`).style.width = w + 'px';
+    document.querySelector(`#canvas-area #canvas-page-${layers[activeLayer].name}`).style.height = h + 'px';
 }
 
 function toggle(e) {
@@ -149,39 +160,43 @@ function toggle(e) {
     }
 }
 
+function createLayer() {
+    layers.push('layer' + layers.length);
+}
+
 function createLayout() {
     const columns = getColumns();
     const rows = getRows();
     const boxCount = columns * rows;
     const trimSize = getTrimSize();
     const gutters = getGutters();
-    // const margins = getMargins();
     let start = getStartingNumber();
     const prefix = getPrefix();
     const postfix = getPostfix();
 
-
-    let trimArea = `<div class="trim-area" id="trim-area" style="display:grid; 
-    grid-template-columns:repeat(${columns}, ${trimSize.width}px);
-    grid-template-rows: repeat(${rows}, ${trimSize.height}px);
-    column-gap: ${gutters.x}px;
-    row-gap: ${gutters.y}px;
-    "></div>`;
+    let layerArea = `
+            <div class="trim-area" id="${layers[activeLayer].name}" style="display:grid; 
+                grid-template-columns:repeat(${columns}, ${trimSize.width}px);
+                grid-template-rows: repeat(${rows}, ${trimSize.height}px);
+                column-gap: ${gutters.x}px;
+                row-gap: ${gutters.y}px;">
+            </div>`;
     let divBox = '';
     for (let i = 0; i < boxCount; i++) {
-        divBox += `<div class="item"> <div>${prefix}${start++}${postfix}</div> </div>`;
+        divBox += `<div class="item" style="border: 1px solid silver; background: white"> 
+                <div style="position:relative;  border: 1px solid yellow; background-color:#fff;">${prefix}${start++}${postfix}</div> 
+            </div>`;
     }
-    document.querySelector('#canvas-page').innerHTML = trimArea;
-    document.querySelector('#trim-area').innerHTML = divBox;
+    document.querySelector(`#canvas-page-${layers[activeLayer].name}`).innerHTML = layerArea;
+    document.querySelector('#' + layers[activeLayer].name).innerHTML = divBox;
     calculateMargins();
     itemTextChange();
-
 }
 
 function itemTextChange() {
     const fontSize = getValueAsFloat('#font-size');
-    // console.log(fontSize / 72 * scaleFactor);
-    document.querySelectorAll('.item').forEach(element => {
+
+    document.querySelectorAll(`.item`).forEach(element => {
         element.firstElementChild.style.fontSize = ((fontSize / 72) * scaleFactor) + 'px';
         element.firstElementChild.style.color = getFontColor();
         element.firstElementChild.style.marginLeft = getMargins().left + 'px';
@@ -196,26 +211,25 @@ function calculateMargins() {
     const rows = getRows();
     const trimSize = getTrimSize();
     const gutters = getGutters();
-    //const margins = getMargins();
     const page = getPageDimensions()
 
     let marginSum = page.width;
     marginSum -= (gutters.x * (columns - 1)) + (trimSize.width * columns);
     marginSum /= 2;
-    // console.log(marginSum)
-    document.querySelector('#trim-area').style.marginLeft = marginSum + 'px';
-    document.querySelector('#trim-area').style.marginRight = marginSum + 'px';
+
+    document.querySelector('#' + layers[activeLayer].name).style.marginLeft = marginSum + 'px';
+    document.querySelector('#' + layers[activeLayer].name).style.marginRight = marginSum + 'px';
 
     let marginTopSum = page.height;
     marginTopSum -= (gutters.y * (rows - 1)) + (trimSize.height * rows);
     marginTopSum /= 2;
     // console.log(marginSum)
-    document.querySelector('#trim-area').style.marginTop = marginTopSum + 'px';
-    document.querySelector('#trim-area').style.marginBottom = marginTopSum + 'px';
+    document.querySelector('#' + layers[activeLayer].name).style.marginTop = marginTopSum + 'px';
+    document.querySelector('#' + layers[activeLayer].name).style.marginBottom = marginTopSum + 'px';
 }
 
 (function onInit() {
-    window.onresize = function () {
+    window.onresize = function() {
         onChange();
     }
 
