@@ -4,17 +4,29 @@ let leftPadIsChecked = false;
 let scaleFactor = 72;
 let activeLayer = 0;
 let layers = [
-    { name: 'layer0', margins: { left: 0, right: 0, top: 0, bottom: 0 } }
+    {
+        name: 'layer0',
+        margins: { left: 0, right: 0, top: 0, bottom: 0 },
+        x: 0,
+        y: 0,
+        width: 0,
+        height: 0,
+        fontColor: '#000000',
+        textAlign: 'left',
+        textSize: 14,
+        prefix: '',
+        postfix: ''
+    }
 ];
 
 // getters
 function getColumns() { return getValueAsInt('#columns') }
 
-function getFontColor() { return pageProperties.querySelector('#font-color').value }
+function getFontColor() { return layers[activeLayer].fontColor }
 
-function getPostfix() { return pageProperties.querySelector('#postfix').value }
+function getPostfix() { return layers[activeLayer].postfix }
 
-function getPrefix() { return pageProperties.querySelector('#prefix').value }
+function getPrefix() { return layers[activeLayer].prefix }
 
 function getRows() { return getValueAsInt('#rows') }
 
@@ -174,6 +186,7 @@ function createLayout() {
     const prefix = getPrefix();
     const postfix = getPostfix();
 
+
     let layerArea = `
             <div class="trim-area" id="${layers[activeLayer].name}" style="display:grid; 
                 grid-template-columns:repeat(${columns}, ${trimSize.width}px);
@@ -184,7 +197,12 @@ function createLayout() {
     let divBox = '';
     for (let i = 0; i < boxCount; i++) {
         divBox += `<div class="item" style="border: 1px solid silver; background: white"> 
-                <div style="position:relative;  border: 1px solid yellow; background-color:#fff;">${prefix}${start++}${postfix}</div> 
+                <div style="position:absolute; 
+                    height:'${layers[activeLayer].height}'px; 
+                    width:'${layers[activeLayer].width}'px; 
+                    border: 1px solid yellow; 
+                    background-color:#fff;">${prefix}${start++}${postfix}
+                </div> 
             </div>`;
     }
     document.querySelector(`#canvas-page-${layers[activeLayer].name}`).innerHTML = layerArea;
@@ -229,7 +247,7 @@ function calculateMargins() {
 }
 
 (function onInit() {
-    window.onresize = function() {
+    window.onresize = function () {
         onChange();
     }
 
