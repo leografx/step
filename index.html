@@ -12,7 +12,7 @@
 
     <div class="main-container">
 
-        <div id="canvas-area" class="item" style="width: 100%; height: 100%;">
+        <div id="canvas-area" class="layer0" style="width: 100%; height: 100%;">
             <div id="canvas-page-layer0"></div>
         </div>
 
@@ -37,11 +37,11 @@
                 <div class="col-2">
                     <div>
                         <label for="trim-size-w">Width</label>
-                        <input type="number" name="trim_size_w" min="0.5" id="trim-size-w" value="3.50">
+                        <input type="number" name="trim_size_w" min="0.5" step=".125" id="trim-size-w" value="3.50">
                     </div>
                     <div>
                         <label for="rows">Height</label>
-                        <input type="number" name="trim_size_h" min="0.5" id="trim-size-h" value="2.00">
+                        <input type="number" name="trim_size_h" min="0.5" step=".125" id="trim-size-h" value="2.00">
                     </div>
                 </div>
             </section>
@@ -160,7 +160,22 @@
 
     <div class="footer">Footer</div>
 
+
     <!-- You can also require other files to run in this process -->
+    <script src="./src/global.js"></script>
+    <script src="./src/layers.js"></script>
+    <script src="./src/ui.js"></script>
+    <script src="./src/listeners.js"></script>
+    <script src="./src/padding.js"></script>
+    <script src="./src/getters.js"></script>
+    <script src="./src/scale.js"></script>
+    <script src="./src/text.js"></script>
+    <script src="./src/canvas.js"></script>
+    <script src="./src/page.js"></script>
+    <script src="./src/align.js"></script>
+    <script src="./src/margins.js"></script>
+    <script src="./src/append.js"></script>
+    <script src="./src/layout.js"></script>
     <script src="./renderer.js"></script>
 </body>
 
