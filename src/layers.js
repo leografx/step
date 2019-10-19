@@ -6,9 +6,9 @@ let layers = [{
     width: 3.5,
     height: 2,
     fontColor: '#000000',
-    textAlign: 'right',
+    textAlign: 'left',
     fontSize: 14,
-    prefix: 'Hello world of worlds!',
+    prefix: '',
     postfix: ''
 }];
 
