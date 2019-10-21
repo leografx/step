@@ -1,3 +1,6 @@
+let x;
+let y;
+
 function setMargins() {
     layers[activeLayer].margins.left = getValueAsFloat('#margin-left');
     layers[activeLayer].margins.right = getValueAsFloat('#margin-right');
@@ -35,4 +38,20 @@ function calculateMargins() {
 
     document.querySelector('#' + layers[activeLayer].name).style.marginTop = marginTopSum + 'px';
     document.querySelector('#' + layers[activeLayer].name).style.marginBottom = marginTopSum + 'px';
+}
+
+function changeMargins(side) {
+    let marginTop = document.querySelector(`#handle-margin-${side}`);
+    let top = pageProperties.querySelector('#margin-top');
+    top.value = marginTop.value;
+    marginTop.value = top.value;
+
+    onChange();
+}
+
+
+function setOrigin(e) {
+    x = e.clientX;
+    y = e.clientY;
+    console.log(x, y);
 }

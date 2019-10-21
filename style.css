@@ -235,3 +235,54 @@ div>span {
     margin-right: auto;
     grid-area: trim
 } */
+
+
+/*********************** handles *************************/
+
+.handle-top-right {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    background-color: transparent;
+    border: 1px solid rgba(0, 110, 255, 0.568);
+    right: -9px;
+    top: -9px;
+    border-radius: 5px;
+    cursor: nesw-resize;
+}
+
+.handle-top-left {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    background-color: transparent;
+    border: 1px solid rgba(0, 110, 255, 0.568);
+    left: -10px;
+    top: -10px;
+    border-radius: 5px;
+    cursor: nwse-resize;
+}
+
+.handle-bottom-right {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    background-color: transparent;
+    border: 1px solid rgba(0, 110, 255, 0.568);
+    right: -9px;
+    bottom: -9px;
+    border-radius: 5px;
+    cursor: nwse-resize;
+}
+
+.handle-bottom-left {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    background-color: transparent;
+    border: 1px solid rgba(0, 110, 255, 0.568);
+    left: -9px;
+    bottom: -9px;
+    border-radius: 5px;
+    cursor: nesw-resize;
+}

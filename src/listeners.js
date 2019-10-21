@@ -10,4 +10,5 @@ function applyListeners() {
     document.querySelectorAll('.align').forEach(element => {
         element.addEventListener('click', changeTextAlignment);
     });
+
 }
